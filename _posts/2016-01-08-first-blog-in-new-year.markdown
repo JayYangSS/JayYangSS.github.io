@@ -3,7 +3,7 @@ layout:     post
 title:      "新年第一篇"
 subtitle:   "jekyll blog writing"
 author:     "Jayn"
-header-img: "img/post-bg-06.jpg"
+header-img: "img/post-bg-04.jpg"
 tags:
   - jekyll
   - blog
@@ -26,6 +26,22 @@ tags:
 我使用的评论系统是“多说”，但是在设置的时候是有点egg pain,多说的账号设置我一开始绑定我的微博，我的微博账户是带汉字的，然后就跪了，怎么则么都不好使，后来将多说的用户名称修改为英文，然后就好使了。
 
 关于jekyll的使用，还有很多特性还不太了解，以后一边用一边学吧。感觉用这个写来的Blog样式还是不错的。以后就在这边多多记录自己的学习笔记和一些感悟吧。多多总结，不断提高自我。
+
+##添加Google Analytics
+
+Google Analytics是用来做用户访问统计的。在Google Analytics注册账号后，会得到Google统计代码，将这个放到自己的每一个网页上即可，具体做法是：
+
+在` _includes/google_analytics.html`中将Google生成的代码贴进去，然后在`_layouts/default.html`中将如下代码添加：
+
+```html
+{% include google_analytics.html %}
+```
+
+
+测试了一下，然后就可以工作了啊。下面是简单的测试结果：
+
+![google_analytics](http://7xniym.com1.z0.glb.clouddn.com/google_analytics.png)
+
 
 <a href="#">
     <img src="{{ site.baseurl }}/img/jekyll_github.png" alt="Post Sample Image">
