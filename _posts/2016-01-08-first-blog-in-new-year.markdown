@@ -21,30 +21,35 @@ tags:
 
 还有一个问题，发现修改了一些内容，在本地启动运行，博客内容已经更新，但是推到github上后，没有变化，应该是github还没有build出新的版本，也有可能是本地浏览器缓存下来的内容，导致更新后的内容看不到，在URL后面加`?v=1`可以解决这个问题。
 
-##关于评论系统的添加
+## 关于评论系统的添加
 
 我使用的评论系统是“多说”，但是在设置的时候是有点egg pain,多说的账号设置我一开始绑定我的微博，我的微博账户是带汉字的，然后就跪了，怎么则么都不好使，后来将多说的用户名称修改为英文，然后就好使了。
 
 关于jekyll的使用，还有很多特性还不太了解，以后一边用一边学吧。感觉用这个写来的Blog样式还是不错的。以后就在这边多多记录自己的学习笔记和一些感悟吧。多多总结，不断提高自我。
 
-##添加Google Analytics
+## 添加Google Analytics
 
 Google Analytics是用来做用户访问统计的。在Google Analytics注册账号后，会得到Google统计代码，将这个放到自己的每一个网页上即可，具体做法是：
 
 在` _includes/google_analytics.html`中将Google生成的代码贴进去，然后在`_layouts/default.html`中将如下代码添加：
 
-```html
-{% include google_analytics.html %}
-```
-
+>\{_%_ include google_analytics.html %\}  
 
 测试了一下，然后就可以工作了啊。下面是简单的测试结果：
 
 ![google_analytics](http://7xniym.com1.z0.glb.clouddn.com/google_analytics.png)
 
+## 代码高亮功能
+
+在`_configure.yml`中要指明高亮使用的分析器，jekyll默认使用`pygments`，我将代码push到github上是可以高亮显示的，但是在本地无法运行jekyll，原因是在本地我的`pygments`总是安装失败，所以我在`_configure.yml`中换成了`highlighter: rouge`,虽然没有`pygments`支持的语言多，但是够我用就行了。这样代码就可以高亮显示了。`rouge`支持的语言在[这里](https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers).
+
+在平常写markdown文章时，代码高亮很简单，就是将代码直接写在两组3个点号之间就可以了，这种写法在本地运行jekyll时没有问题，但是当push到github上去时就无法高亮显示了，而是要使用如下方式才可以高亮显示：
+
+> \{_%_ highlight *词法分析器* %\}  
+> 需要高亮的代码  
+> \{_%_ endhighlight %\}
 
 <a href="#">
     <img src="{{ site.baseurl }}/img/jekyll_github.png" alt="Post Sample Image">
 </a>
 <span class="caption text-muted">
-

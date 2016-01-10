@@ -14,7 +14,9 @@ weibo_username: u/2122271063
 
 # Build settings
 markdown: kramdown
-highlighter: pygments
+kramdown:
+  input: GFM                            # without it, the hightlight will not work !important
+highlighter: rouge
 permalink: pretty
 paginate: 10
 gems: [jekyll-paginate]

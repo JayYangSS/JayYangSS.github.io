@@ -18,7 +18,7 @@ tags:
 
 基于上述思想，我们给出信号灯的识别的算法：
 
-```c++
+{% highlight cpp %}
 int RecognizeLight(Mat segImg)
 {   
     Mat edge;
@@ -67,7 +67,8 @@ int RecognizeLight(Mat segImg)
         return direction_right;//return the right arrow recognition result
     }
 }
-```
+{% endhighlight %}
+
 
 下面的这段代码中，`Mat segImg`是提取到的信号灯发光单元，为单通道图像，如下图中间的图像
 上所示：
@@ -81,8 +82,8 @@ int RecognizeLight(Mat segImg)
 但是我使用`findContours`函数找到canny边缘检测后得到的轮廓，发现找到的轮廓并没有断开（如下图右图所示），这个是个比较奇怪的问题，因为这样看的话，canny边缘检测得到的边缘并没有断开，可是为什么使用如下的代码直接显示`edge`会出现断开的问题呢？
 ![TLContours](http://7xniym.com1.z0.glb.clouddn.com/TLcontours.png)
 
-```c++
+{% highlight cpp %}
 Canny(inputImg,edge,20,50,5);
 imshow("edges", edge);
 waitKey(1);
-```
+{% endhighlight %}
