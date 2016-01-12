@@ -68,20 +68,20 @@ int main(){
 {% highlight cpp %}
 class ClxTest
 {
-　public:
-　　ClxTest();
-　　~ClxTest();
+  public:
+    ClxTest();
+    ~ClxTest();
  
-　　void Output() const;
-　　int GetOutputTimes() const;
+    void Output() const;
+    int GetOutputTimes() const;
  
-　private:
-　　mutable int m_iTimes;
+  private:
+    mutable int m_iTimes;
 };
  
 ClxTest::ClxTest()
 {
-　m_iTimes = 0;
+  m_iTimes = 0;
 }
  
 ClxTest::~ClxTest()
@@ -89,20 +89,20 @@ ClxTest::~ClxTest()
  
 void ClxTest::Output() const
 {
-　cout << "Output for test!" << endl;
-　m_iTimes++;
+  cout << "Output for test!" << endl;
+  m_iTimes++;
 }
  
 int ClxTest::GetOutputTimes() const
 {
-　return m_iTimes;
+  return m_iTimes;
 }
  
 void OutputTest(const ClxTest& lx)
 {
-　cout << lx.GetOutputTimes() << endl;
-　lx.Output();
-　cout << lx.GetOutputTimes() << endl;
+  cout << lx.GetOutputTimes() << endl;
+  lx.Output();
+  cout << lx.GetOutputTimes() << endl;
 }
 {% endhighlight %}
 
