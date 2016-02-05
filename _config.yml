@@ -34,4 +34,9 @@ ga_track_id: 'UA-72166054-1'            # Format: UA-xxxxxx-xx
 
 # Featured Tags
 featured-tags: true
-#featured-condition-size: 1     # A tag will be featured if the size of it is more than this condition value
+featured-condition-size: 1     # A tag will be featured if the size of it is more than this condition value
+
+#sidebar settings
+sidebar: true                           # whether or not using Sidebar.
+sidebar-about-description: "记录生活的点滴。"
+sidebar-avatar: /img/avatar-jayn.jpg
