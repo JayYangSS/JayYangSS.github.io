@@ -1,3 +1,19 @@
+.sidebar-container .short-about img {
+  width: 80%;
+  display: block;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.sidebar-container .short-about p {
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+.sidebar-container .short-about .list-inline > li {
+  padding-left: 0px;
+}
+
 body {
   font-family: 'Lora', 'Times New Roman', serif;
   font-size: 20px;
