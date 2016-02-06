@@ -3,7 +3,7 @@ layout:     post
 title:      "交通信号灯识别"
 subtitle:   "using blob analysis method"
 author:     "Jayn"
-header-img: "img/post-bg-06.jpg"
+header-img: "/img/post-bg-06.jpg"
 tags:
   - OpenCV
   - Computer Vison

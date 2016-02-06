@@ -3,7 +3,7 @@ layout:     post
 title:      "ThreadLocal的用法"
 subtitle:   "learning ThreadLocal"
 author:     "Jayn"
-header-img: "img/about-bg.jpg"
+header-img: "/img/about-bg.jpg"
 tags:
   - Java
 ---

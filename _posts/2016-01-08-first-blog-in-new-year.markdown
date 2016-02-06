@@ -3,7 +3,7 @@ layout:     post
 title:      "新年第一篇"
 subtitle:   "jekyll blog writing"
 author:     "Jayn"
-header-img: "img/post-bg-04.jpg"
+header-img: "/img/post-bg-04.jpg"
 tags:
   - jekyll
   - blog

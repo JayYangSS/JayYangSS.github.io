@@ -3,7 +3,7 @@ layout:     post
 title:      "关于git rebase的使用"
 subtitle:   "usage of git rebase"
 author:     "Jayn"
-header-img: "img/about-bg.jpg"
+header-img: "/img/about-bg.jpg"
 tags:
   - git
 ---

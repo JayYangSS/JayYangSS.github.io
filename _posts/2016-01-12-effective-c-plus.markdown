@@ -3,7 +3,7 @@ layout:     post
 title:      "Effective C++读书笔记"
 subtitle:   "Effective C++"
 author:     "Jayn"
-header-img: "img/taogongzai.jpg"
+header-img: "/img/taogongzai.jpg"
 tags:
   - C++
   - 读书笔记

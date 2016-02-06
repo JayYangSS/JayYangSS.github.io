@@ -3,7 +3,7 @@ layout:     post
 title:      "spring MVC学习"
 subtitle:   "Learning Spring MVC"
 author:     "Jayn"
-header-img: "img/about-bg.jpg"
+header-img: "/img/about-bg.jpg"
 tags:
   - spring-mvc
 ---
