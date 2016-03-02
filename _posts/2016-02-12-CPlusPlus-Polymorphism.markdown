@@ -70,7 +70,54 @@ int main(){
 
 需要注意的是，上述的vtable和vptr都是在对象初始化后才产生的，而这个初始化的过程是在构造函数中完成的，因此构造函数不可以是虚函数！
 
+---
 
+## 一个有趣的问题
+
+看下面的代码：
+
+{% highlight c %}
+#include<iostream>
+using namespace std;
+class B0//基类BO声明
+{
+public://外部接口
+virtual void display()//虚成员函数
+{
+    cout<<"B0::display0"<<endl;}
+};
+class B1:public B0//公有派生
+{
+public:
+    void display() { cout<<"B1::display0"<<endl; }
+};
+class D1: public B1//公有派生
+{
+public:
+    void display(){ cout<<"D1::display0"<<endl; }
+};
+void fun(B0 ptr)//普通函数
+{
+    ptr.display();
+}
+int main()//主函数
+{
+    B0 b0;//声明基类对象和指针
+    B1 b1;//声明派生类对象
+    D1 d1;//声明派生类对象
+    fun(b0);//调用基类B0函数成员
+    fun(b1);//调用派生类B1函数成员
+    fun(d1);//调用派生类D1函数成员
+}
+{% endhighlight %}
+
+上面这段代码的输出为什么呢？答案是：
+
+>B0::display() B0::display() B0::display()
+
+为啥不是：B0::display() B1::display() D1::display()？为啥没有实现多态？原因是就是由于`fun`函数的参数是不是按地址传值，这样会转化为基类对象，直接调用基类的成员函数，如果是指针传递，改为B0 *ptr，ptr->display()，可以实现多态这样的话就无法进行动态绑定。
+
+虚函数的动态绑定仅在基类指针或引用绑定派生类对象时发生，fun的形参不是指针，所以调用哪个版本的函数编译时就已经确定，根据形参静态类型确定调用B0的成员。
 
 ### 总结
 
