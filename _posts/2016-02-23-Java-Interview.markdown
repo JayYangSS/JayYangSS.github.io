@@ -20,6 +20,35 @@ tags:
 ### 2.java自动装箱
 就是将基本数据类型（java中有8个int,short,long,boolean,char,float,byte,double)自动转换为Integer,Boolean等封装类型，相应的反转换就是自动拆箱
 
+关于自动装箱的问题刚刚看到一个之前不太了解的问题：
+
+```java
+public class Test03 {
+
+    public static void main(String[] args) {
+        Integer f1 = 100, f2 = 100, f3 = 150, f4 = 150;
+
+        System.out.println(f1 == f2);
+        System.out.println(f3 == f4);
+    }
+}
+```
+
+如果不明就里很容易认为两个输出要么都是true要么都是false。首先需要注意的是f1、f2、f3、f4四个变量都是Integer对象引用，所以下面的==运算比较的不是值而是引用。
+
+装箱的本质是什么呢？当我们给一个Integer对象赋一个int值的时候，会调用Integer类的静态方法valueOf，如果看看valueOf的源代码就知道发生了什么。
+
+```java
+    public static Integer valueOf(int i) {
+        if (i >= IntegerCache.low && i <= IntegerCache.high)
+            return IntegerCache.cache[i + (-IntegerCache.low)];
+        return new Integer(i);
+    }
+```
+
+也就是说当赋值范围在`IntegerCache.low`和`IntegerCache.high`时，不会new出新的对象，若赋值范围不再这个之间，则new出新的对象，所以上面的输出为`true`和`false`。
+
+
 ### 3.final与static
 * final可以用于修饰非抽象类，非抽象方法
 
@@ -107,3 +136,4 @@ Java集合可以分为线程安全和非线程安全两大类。
 * Synchronized关键字可以修饰成员方法和代码块，被该关键字修饰的代码，只能被一个线程执行
 
 * 线程通过Synchronized关键字可以获得对象的锁（每个对象都有一个锁），此时禁止其他线程访问
+
