@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "开始准备找工作了"
+title:      "JAVA基础复习"
 subtitle:   "Review of Java"
 author:     "Jayn"
 header-img: "/img/post-bg-05.jpg"
