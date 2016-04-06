@@ -125,8 +125,87 @@ int main()//主函数
 
 虚函数的动态绑定仅在基类指针或引用绑定派生类对象时发生，fun的形参不是指针，所以调用哪个版本的函数编译时就已经确定，根据形参静态类型确定调用B0的成员。
 
+### 类的大小问题
+
+一个空类的大小是多少呢？一个含有虚函数的类的大小是多少呢？看下面一段代码：
+
+```c++
+class testEmptyClass
+{
+public:
+    testEmptyClass(){}
+    ~testEmptyClass(){}
+    virtual void f(){}
+    
+};
+
+class testEmptyClass2:public testEmptyClass
+{
+public:
+    testEmptyClass2();
+    ~testEmptyClass2();
+    void f(){}
+};
+
+class empty1
+{
+    public:
+    empty1(){}
+    ~empty1(){}  
+};
+
+class empty2
+{};
+
+class empty3
+{
+public:
+    empty3(){}
+    ~empty3(){}
+    virtual void f(){};
+private:
+    char k[3];  
+};
+
+class empty4:public empty3
+{
+public:
+    void f(){}
+private:
+    char p;
+};
+
+
+int main(){
+    //testEmptyClass t;
+    //empty e;
+
+    cout<<"testEmptyClass:"<<sizeof(testEmptyClass)<<endl;
+    cout<<"testEmptyClass2:"<<sizeof(testEmptyClass2)<<endl;
+    cout<<"empty1:"<<sizeof(empty1)<<endl;
+    cout<<"empty2:"<<sizeof(empty2)<<endl;
+    cout<<"empty3:"<<sizeof(empty3)<<endl;
+    cout<<"empty4:"<<sizeof(empty4)<<endl;
+}
+```
+输出结果为：
+
+>testEmptyClass:8
+>testEmptyClass2:8
+>empty1:1
+>empty2:1
+>empty3:16
+>empty4:16
+
+为什么空类的大小为1而不是0呢？因为为了区别不同的空类，系统需要为他们分配至少一个字节的不同存储空间以标识他们是不同的类，这样子空类的大小就为1；若增加了虚函数，则该类中就有虚函数表和指向虚函数表的虚表指针，这个虚表指针占据的空间大小为8 byte(64位系统为8 byte，32位系统为4 byte)。
+
+为什么`empty3`和`empty4`的大小都为16呢？`empty3`中的`char k[3]`大小为3，虚表指针大小为8，对齐后大小为16；`empty4`的成员变量由于继承了`empty3`中的`char k[3]`,再加上自己的`char p`，大小为4，以及自己的虚表指针大小为8，对齐后就为16.
+
+
 ### 总结
 
 C++的多态性用一句话概括就是：在基类的函数前加上`virtual`关键字，在派生类中重写该函数，运行时将会根据对象的实际类型来调用相应的函数。如果对象类型是派生类，就调用派生类的函数；如果对象类型是基类，就调用基类的函数。
 
 如果在父类中的某个方法上添加了关键字`virtual`，那么它的所有子类的该方法不用再写关键字`virtual`，他们都是虚函数，都可以对父类进行方法覆盖。
+
+类的大小是类中所有的成员变量大小之和，如果有虚函数存在的话，还要加上虚表指针的大小，同时要注意类的对齐问题！
