@@ -27,6 +27,7 @@ define就是简单的做一下文本的替换，没有类型的检查。并且�
 `inline` 推出的目的，也正是为了取代上面的宏定义表达式形式，它消除了它的缺点，同时又很好地继承了它的优点。inline代码放入预编译器符号表中，高效；它是个真正的函数，调用时有严格的参数检测；它也可作为类的成员函数。c++的内联函数机制既具备宏代码的效率，又增加了安全性，且可自由操作类的数据成员。
 
 如我们定义如下内敛函数：
+
 ```c++
 inline const string & shorterString(const string &s1,const string &s2){
     return s1.size()<s2.size()?s1:s2;
@@ -35,11 +36,13 @@ inline const string & shorterString(const string &s1,const string &s2){
 
 
 当我们调用内联函数的时候：
+
 ```c++
 cout<<shorterString(s1,s2).c_str()<<endl;
 ```
 
 在编译时会展开为：
+
 ```c++
 cout<<(s1.size()<s2.size()?s1:s2).c_str()<<endl;
 ```
