@@ -1,4 +1,4 @@
-﻿---
+---
 layout:     post
 title:      "谈谈C++中的类存储模型"
 subtitle:   "Polymorphism Memory Layout"
