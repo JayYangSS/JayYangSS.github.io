@@ -25,15 +25,17 @@ private:
     int b;
 };
 
-class B:private A
+class B
 {
 public:
     virtual void f1(){ cout << "B::f1()" << endl; }
     virtual void g1(){ cout << "B::g1()" << endl; };
     virtual void h1(){ cout << "B::h1()" << endl; };
+    int c1;
 
 private:
-
+    int a1;
+    int b1;
 };
 
 class C :private A{
